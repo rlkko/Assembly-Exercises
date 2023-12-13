@@ -24,12 +24,14 @@ l1:
     jmp l1
 
 l2:
-mov eax,1
-call print_eax
-jmp l3
+    mov eax,1
+    call print
 
 l4:
     mov eax,0
+    call print
+
+print:
     call print_eax
 
 l3:

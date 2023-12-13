@@ -6,46 +6,43 @@ include 'win32a.inc'
 ; this is a demo with a library
 section '.text' code readable executable
 start:
-    ;ebx = t1
-    ;edx = t2
-    mov ebx,1
-    mov edx,2 
+    ;first number
+    mov ebx,0
+    ;second number
+    mov edx,1 
     
     ;get user input for n
     call read_hex
-    mov edi,eax
+    mov esi,eax
     
-    ;counter
-    mov esi,3
-    
-    ;nextTerm =  t1 + t2 
-    mov ecx,ebx
-    add ecx,edx
-    
-    ;print t1
-    mov eax,ebx
-    call print_eax
+    ;clear fib index
+    xor ecx,ecx
 
-    ;print t2
-    mov eax,edx
-    call print_eax
+next_fibo:
+    ; result
+    mov edi,0
+   
+    ; add both to result
+    add edi,ebx
+    add edi,edx
 
-l1:
-    call print_numbers
-    inc esi
-
-    ;t1 = t2
+    ; set first number to second
     mov ebx,edx
 
-    ;t2 = nextTerm
-    mov edx,ecx
-   
-   ;nextTerm = t1 + t2
-    mov ecx,ebx
-    add ecx,edx
+    ; set second to result
+    mov edx,edi
+    
+    ; add one to the index
+    inc ecx
+    
+    ;compare index to user input
+    cmp esi,ecx
+    jne next_fibo
 
-    cmp esi,edi
-    jnz l1
+    mov eax,ebx
+
+print:
+    call print_eax
 
 	push	0
 	call	[ExitProcess]
