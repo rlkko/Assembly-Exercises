@@ -5,12 +5,12 @@ include 'win32a.inc'
 
 section '.data' data readable writeable
 my_nums dd 1,6,3,2,11h,3,9,17h,5h,14h
-my_nums_end:
+ARR_SIZE = ($ - my_nums) / 4 
 ;for the actual code
 section '.text' code readable executable
 
 start: ; get arr size
-   mov esi,(my_nums_end - my_nums) / 4
+   mov esi,ARR_SIZE
    
    lea edi,[my_nums] ; get array base
    xor ecx,ecx ; 0 is the biggest number
