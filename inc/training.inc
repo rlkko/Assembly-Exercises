@@ -243,6 +243,6 @@ import  kernel,\
         ReadFile,'ReadFile'
 
 import  msvcrt,\
-        printf, 'printf',\
+        printf, 'printf',scanf,'scanf',\
         strtoul, 'strtoul'
 
