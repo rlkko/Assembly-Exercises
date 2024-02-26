@@ -22,9 +22,7 @@ start:
     lea edi,[str2] ; copies str2 to edi
     mov ecx,STR_SIZE ; sets loop counter
 
-    repet:
-    movsb ; move character from esi to edi
-    loop repet
+    rep movsb ; move character from esi to edi
     
     mov esi,str2 ; prepare to print 
     call print_str
