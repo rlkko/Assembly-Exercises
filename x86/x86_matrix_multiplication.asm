@@ -24,6 +24,7 @@ start:
 push matrix2
 push matrix1
 call multiply_matrix
+add esp,8
 
 push 0
 call [ExitProcess]
@@ -59,6 +60,6 @@ jnz .firstloop
 
 mov esp,ebp
 pop ebp
-ret 4
+ret 
 
 include 'training.inc'
